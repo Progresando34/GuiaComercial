@@ -592,6 +592,53 @@
             color: white;
         }
 
+        /* Estilo para el enlace de dirección tipo botón */
+        .direccion-boton {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 22px;
+            backdrop-filter: blur(2px);
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .direccion-boton:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #FFA000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 160, 0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .direccion-boton {
+                gap: 14px;
+                padding: 1.2rem;
+                border-radius: 26px;
+            }
+        }
+
+        .direccion-boton i {
+            font-size: 1.5rem;
+            background: white;
+            padding: 8px;
+            border-radius: 18px;
+            color: #FFA000;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .direccion-boton i {
+                font-size: 1.8rem;
+                padding: 10px;
+                border-radius: 22px;
+            }
+        }
+
         /* Contenedor de contacto destacado actualizado */
         .contacto-destacado {
             background: #f5fbf0;
@@ -1361,14 +1408,16 @@
                 </div>
 
                 <div class="grid-sede">
-                    <div class="sede-card">
+                    <!-- Enlace de dirección mejorado como botón -->
+                    <a href="https://www.google.com/maps/place/Ips+Progresando+En+Salud/@7.8811617,-72.4982139,14.96z/data=!4m6!3m5!1s0x8e664598b7e2b963:0x431474e35d1d32ce!8m2!3d7.875924!4d-72.498766!16s%2Fg%2F11g9q4k6xl?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank" class="direccion-boton">
                         <i class="fas fa-map-pin" style="color:#FFA000;"></i>
                         <div>
                             <h4 style="font-size:1rem;">Dirección</h4>
                             <p style="font-size:0.9rem;"><strong>Calle 21a # 0b-75, Barrio Blanco</strong><br>Orden de
                                 llegada.</p>
                         </div>
-                    </div>
+                    </a>
                     <div class="sede-card">
                         <i class="fas fa-clock" style="color:#1976D2;"></i>
                         <div>
@@ -1391,7 +1440,7 @@
                         <a href="https://wa.me/573049219192?text=Hola%2C%20soporte%20general" target="_blank"
                             class="telefono-boton">
                             <i class="fab fa-whatsapp"></i> 3043219192
-                        </a> (soporte)
+                        </a> (Soporte General)
                     </span>
                     <span><i class="fas fa-calendar-alt" style="color:#FFA000;"></i> Guía actualizada 2026</span>
                 </div>
