@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Guía Progresando en Salud · Vinculación y Facturación</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #eef4e7;
+            background-image:
+                radial-gradient(circle at 5% 20%, rgba(99, 154, 51, 0.08) 0%, transparent 28%),
+                radial-gradient(circle at 95% 75%, rgba(25, 118, 210, 0.05) 0%, transparent 35%);
+            min-height: 100vh;
+            padding: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* contenedor principal */
+        .documento-ips {
+            max-width: 1200px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px -20px rgba(20, 60, 20, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(99, 154, 51, 0.2);
+        }
+
+        /* HEADER */
+        .header-principal {
+            background: linear-gradient(145deg, #518a2a 0%, #2e681d 100%);
+            padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+            color: white;
+            border-bottom: 5px solid #FFC107;
+        }
+
+        @media (min-width: 768px) {
+            .header-principal {
+                padding: 1.8rem 2.5rem 1.5rem 2.5rem;
+            }
+        }
+
+        .header-principal h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .header-principal h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .header-principal h1 i {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 12px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            color: #FFECB3;
+        }
+
+        @media (min-width: 768px) {
+            .header-principal h1 i {
+                padding: 10px 14px;
+                font-size: 1.6rem;
+            }
+        }
+
+        .header-sub {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            font-size: 0.85rem;
+            border-left: 5px solid #FF5722;
+            padding-left: 1rem;
+            margin-top: 0.3rem;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 0 30px 30px 0;
+            padding: 0.5rem 1.2rem;
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .header-sub {
+                font-size: 0.95rem;
+                padding: 0.6rem 1.5rem;
+                gap: 16px 28px;
+            }
+        }
+
+        .header-sub span i {
+            margin-right: 4px;
+            color: #FFD966;
+        }
+
+        /* BARRA DE COLORES (indicadores) */
+        .indicadores {
+            background: #edf5e6;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            border-bottom: 2px solid #c2ddb2;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 768px) {
+            .indicadores {
+                padding: 0.8rem 2.5rem;
+                gap: 20px 35px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .indicador {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            padding: 0.25rem 1rem;
+            border-radius: 100px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .indicador {
+                white-space: normal;
+                font-size: 0.75rem;
+                padding: 0.25rem 0.8rem;
+            }
+        }
+
+        .indicador.azul i {
+            color: #1976D2;
+        }
+
+        .indicador.rojo i {
+            color: #D32F2F;
+        }
+
+        .indicador.amarillo i {
+            color: #FFA000;
+        }
+
+        /* CONTENIDO principal */
+        .contenido-principal {
+            padding: 1.5rem 1.5rem;
+            background: white;
+        }
+
+        @media (min-width: 768px) {
+            .contenido-principal {
+                padding: 2rem 2.5rem;
+            }
+        }
+
+        /* BLOQUES DE CATEGORÍA */
+        .bloque-capitulo {
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .bloque-capitulo {
+                margin-bottom: 2.5rem;
+            }
+        }
+
+        .titulo-capitulo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.3rem;
+            font-weight: 650;
+            color: #175012;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid #d1e8c2;
+            padding-bottom: 0.5rem;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .titulo-capitulo {
+                font-size: 1.7rem;
+                gap: 10px;
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.6rem;
+            }
+        }
+
+        .titulo-capitulo i {
+            background: #518a2a;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(75, 130, 30, 0.3);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .titulo-capitulo i {
+                width: 42px;
+                height: 42px;
+                font-size: 1.4rem;
+            }
+        }
+
+        /* TARJETAS DE PASO */
+        .tarjeta-paso {
+            background: #fafdf8;
+            border-radius: 20px;
+            padding: 1.2rem 1.2rem;
+            margin-bottom: 16px;
+            border: 1px solid #d9ebce;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+            transition: all 0.2s;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .tarjeta-paso {
+                padding: 1.4rem 1.8rem;
+                margin-bottom: 18px;
+                border-radius: 24px;
+            }
+        }
+
+        .cabecera-paso {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .cabecera-paso {
+                gap: 14px;
+            }
+        }
+
+        .numero-paso {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            background: #518a2a;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            min-width: 45px;
+            box-shadow: 0 6px 10px rgba(75, 130, 30, 0.3);
+            transition: transform 0.1s, background 0.1s;
+            text-decoration: none;
+            border: none;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .numero-paso {
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+                min-width: 55px;
+            }
+        }
+
+        .numero-paso:hover {
+            background: #639A33;
+            transform: scale(1.05);
+        }
+
+        .nombre-paso {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1d5317;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .nombre-paso {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Flecha indicadora en cada paso */
+        .paso-arrow {
+            margin-left: auto;
+            color: #518a2a;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .paso-arrow {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* DESCRIPCIÓN */
+        .descripcion-paso {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #2d4528;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            word-break: break-word;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .descripcion-paso {
+                font-size: 0.98rem;
+                gap: 14px;
+            }
+        }
+
+        /* Estilos para el acordeón/desplegable */
+        .opcion-pago {
+            margin-bottom: 12px;
+            border: 1px solid #c5e0b7;
+            border-radius: 18px;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .opcion-pago {
+                margin-bottom: 14px;
+                border-radius: 22px;
+            }
+        }
+
+        .opcion-header {
+            background: #e1f0d9;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e5c17;
+            transition: background 0.1s;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .opcion-header {
+                padding: 0.9rem 1.5rem;
+                font-size: 1.1rem;
+                gap: 10px;
+            }
+        }
+
+        .opcion-header:hover {
+            background: #d2e8c4;
+        }
+
+        .opcion-header i:first-child {
+            font-size: 1.1rem;
+            color: #FFA000;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .opcion-header i:first-child {
+                font-size: 1.2rem;
+            }
+        }
+
+        .opcion-header .fa-chevron-down {
+            margin-left: auto;
+            color: #518a2a;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .opcion-contenido {
+            display: none;
+            padding: 1rem 1.2rem;
+            background: #f8fff5;
+            border-top: 1px solid #d1e8c2;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        @media (min-width: 768px) {
+            .opcion-contenido {
+                padding: 1.2rem 1.8rem;
+                font-size: 0.95rem;
+            }
+        }
+
+        .opcion-contenido.active {
+            display: block;
+        }
+
+        /* Flecha rotada cuando está abierto */
+        .opcion-header.active .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* BOTONES DE TELÉFONO - UNIFICADOS EN AZUL */
+        .telefono-boton {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e3f0fd;
+            border: 1px solid #1976D2;
+            color: #1976D2;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(25, 118, 210, 0.1);
+            text-decoration: none;
+            white-space: nowrap;
+            max-width: 100%;
+            word-break: break-word;
+            white-space: normal;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .telefono-boton {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.95rem;
+                gap: 8px;
+                white-space: nowrap;
+            }
+        }
+
+        .telefono-boton i {
+            color: #1976D2;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .telefono-boton i {
+                font-size: 1rem;
+            }
+        }
+
+        .telefono-boton:hover {
+            background: #1976D2;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
+        }
+
+        .telefono-boton:hover i {
+            color: white;
+        }
+
+        /* Correos con estilo consistente */
+        .correo-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fdede7;
+            border: 1px solid #D32F2F;
+            color: #D32F2F;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            word-break: break-word;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .correo-item {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.95rem;
+                gap: 8px;
+            }
+        }
+
+        .correo-item i {
+            color: #D32F2F;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .correo-item a {
+            color: #D32F2F;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .correo-item:hover {
+            background: #D32F2F;
+            color: white;
+        }
+
+        .correo-item:hover a {
+            color: white;
+        }
+
+        .correo-item:hover i {
+            color: white;
+        }
+
+        /* Enlaces de globo */
+        .globo-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e2f0da;
+            border: 1px solid #2d851d;
+            color: #1d5e1d;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            word-break: break-word;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .globo-item {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.95rem;
+                gap: 8px;
+            }
+        }
+
+        .globo-item i {
+            color: #2d851d;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .globo-item a {
+            color: #1d5e1d;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .globo-item:hover {
+            background: #2d851d;
+            color: white;
+        }
+
+        .globo-item:hover a,
+        .globo-item:hover i {
+            color: white;
+        }
+
+        /* Estilo para el enlace de dirección tipo botón */
+        .direccion-boton {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 22px;
+            backdrop-filter: blur(2px);
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .direccion-boton:hover {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #FFA000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 160, 0, 0.2);
+        }
+
+        @media (min-width: 768px) {
+            .direccion-boton {
+                gap: 14px;
+                padding: 1.2rem;
+                border-radius: 26px;
+            }
+        }
+
+        .direccion-boton i {
+            font-size: 1.5rem;
+            background: white;
+            padding: 8px;
+            border-radius: 18px;
+            color: #FFA000;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .direccion-boton i {
+                font-size: 1.8rem;
+                padding: 10px;
+                border-radius: 22px;
+            }
+        }
+
+        /* Contenedor de contacto destacado actualizado */
+        .contacto-destacado {
+            background: #f5fbf0;
+            border-radius: 30px;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 12px;
+            border-left: 6px solid;
+            margin: 6px 0;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .contacto-destacado {
+                padding: 1rem 1.5rem;
+                gap: 15px 20px;
+                border-radius: 50px;
+            }
+        }
+
+        .contacto-destacado.azul {
+            border-left-color: #1976D2;
+        }
+
+        .contacto-destacado.rojo {
+            border-left-color: #D32F2F;
+        }
+
+        .contacto-destacado.amarillo {
+            border-left-color: #FFA000;
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .contacto-item {
+                gap: 8px;
+                font-size: 0.95rem;
+            }
+        }
+
+        .contacto-item a {
+            text-decoration: none;
+        }
+
+        .contacto-universal {
+            margin-top: 14px;
+            background: #fff2d7;
+            border-left: 6px solid #FFA000;
+            padding: 0.7rem 1.2rem;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .contacto-universal {
+                margin-top: 16px;
+                padding: 0.8rem 1.5rem;
+                gap: 12px;
+                font-size: 0.95rem;
+                border-radius: 50px;
+            }
+        }
+
+        /* SECCIÓN DE RECURSOS (videos y documentos) */
+        .recursos-paso {
+            background: #f1f9ec;
+            border-radius: 24px;
+            padding: 1.2rem;
+            border: 1px solid #c5e0b7;
+            margin-top: 6px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .recursos-paso {
+                border-radius: 30px;
+                padding: 1.4rem;
+            }
+        }
+
+        .videos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .videos-grid {
+                gap: 16px;
+                margin-bottom: 16px;
+            }
+        }
+
+        .video-card {
+            flex: 1 1 100%;
+            max-width: 100%;
+            background: white;
+            border-radius: 18px;
+            padding: 10px;
+            border: 1px solid #c5e0b7;
+        }
+
+        @media (min-width: 500px) {
+            .video-card {
+                flex: 1 1 calc(50% - 8px);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .video-card {
+                flex: 1 1 220px;
+                padding: 12px;
+                border-radius: 20px;
+            }
+        }
+
+        .video-card video {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            border-radius: 14px;
+            background: #1d3118;
+            border: 2px solid #b1da9c;
+            object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+            .video-card video {
+                height: 130px;
+                border-radius: 16px;
+            }
+        }
+
+        .video-titulo {
+            font-weight: 500;
+            margin-top: 6px;
+            color: #1b511b;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .video-titulo {
+                font-size: 0.9rem;
+                margin-top: 8px;
+            }
+        }
+
+        .docs-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+            background: white;
+            border-radius: 40px;
+            padding: 0.6rem 1rem;
+            border: 1px solid #b9daa8;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .docs-lista {
+                gap: 10px 16px;
+                border-radius: 50px;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        .doc-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #f0f9ea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            border-left: 4px solid;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            .doc-item {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.9rem;
+                gap: 6px;
+                border-left: 5px solid;
+            }
+        }
+
+        .doc-item.pdf {
+            border-left-color: #D32F2F;
+        }
+
+        .doc-item.excel {
+            border-left-color: #1f7b1f;
+        }
+
+        .doc-item a {
+            text-decoration: none;
+            color: #184d13;
+            word-break: break-all;
+        }
+
+        /* NOTAS y advertencias */
+        .nota-informativa {
+            background: #fffae0;
+            border-left: 6px solid #FFC107;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .nota-informativa {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+                gap: 8px;
+                border-radius: 50px;
+            }
+        }
+
+        /* BLOQUE FINAL DE SEDE */
+        .sede-info {
+            background: #e3f0da;
+            border-radius: 28px;
+            padding: 1.5rem 1.5rem;
+            margin-top: 1.8rem;
+            border: 2px solid white;
+            box-shadow: inset 0 0 0 2px #639A33, 0 10px 18px -12px #39632a;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .sede-info {
+                border-radius: 36px;
+                padding: 2rem 2.2rem;
+                margin-top: 2rem;
+            }
+        }
+
+        .grid-sede {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 1.2rem 0;
+            width: 100%;
+        }
+
+        @media (min-width: 500px) {
+            .grid-sede {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+
+        @media (min-width: 768px) {
+            .grid-sede {
+                gap: 20px;
+                margin: 1.5rem 0;
+            }
+        }
+
+        .sede-card {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 22px;
+            backdrop-filter: blur(2px);
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .sede-card {
+                gap: 14px;
+                padding: 1.2rem;
+                border-radius: 26px;
+            }
+        }
+
+        .sede-card i {
+            font-size: 1.5rem;
+            background: white;
+            padding: 8px;
+            border-radius: 18px;
+            color: #518a2a;
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .sede-card i {
+                font-size: 1.8rem;
+                padding: 10px;
+                border-radius: 22px;
+            }
+        }
+
+        .recordatorio-especial {
+            background: #FF5722;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .recordatorio-especial {
+                padding: 1rem 1.8rem;
+                font-size: 1rem;
+                gap: 12px;
+                border-radius: 50px;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .recordatorio-especial span {
+            background: white;
+            color: #1e4a1a;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #639A33, #FFD966, white);
+            margin: 1.2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            hr {
+                margin: 1.5rem 0;
+            }
+        }
+
+        /* Contenido colapsable de cada paso */
+        .contenido-colapsable {
+            display: none;
+            margin-top: 1rem;
+            width: 100%;
+        }
+
+        .contenido-colapsable.active {
+            display: block;
+        }
+
+        /* Estilo para enlaces de WhatsApp dentro del círculo */
+        .whatsapp-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Utilidades para evitar desbordamiento */
+        ul {
+            padding-left: 1.2rem;
+            word-break: break-word;
+        }
+
+        @media (min-width: 768px) {
+            ul {
+                padding-left: 1.8rem;
+            }
+        }
+
+        li {
+            word-break: break-word;
+        }
+
+        p {
+            word-break: break-word;
+        }
+
+        strong {
+            word-break: break-word;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="documento-ips">
+        <!-- HEADER -->
+        <div class="header-principal">
+            <h1><i class="fas fa-clinic-medical"></i> IPS Progresando en Salud · Guía de vinculación CÚCUTA</h1>
+            <div class="header-sub">
+                <span><i class="fas fa-check-circle"></i> Pasos obligatorios</span>
+                <span><i class="fas fa-phone-alt"></i> Contacto directo</span>
+                <span><i class="fas fa-file-pdf"></i> Formatos descargables</span>
+                <span><i class="fas fa-video"></i> Videos instructivos</span>
+            </div>
+        </div>
+
+        <!-- BARRA INDICADORA DE COLORES -->
+        <div class="indicadores">
+            <div class="indicador azul"><i class="fas fa-circle"></i> Teléfonos y soporte</div>
+            <div class="indicador rojo"><i class="fas fa-circle"></i> Correos electrónicos</div>
+            <div class="indicador amarillo"><i class="fas fa-circle"></i> Enlaces, horarios, detalles</div>
+        </div>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <div class="contenido-principal">
+            <!-- CAPÍTULO 1: Requisitos -->
+            <div class="bloque-capitulo">
+                <div class="titulo-capitulo"><i class="fas fa-file-alt"></i> 1. Requisitos para la atención</div>
+                <div class="tarjeta-paso">
+                    <div class="cabecera-paso" onclick="togglePaso(this)">
+                        <span class="numero-paso">
+                            <a href="https://wa.me/573212152214?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20cotizaci%C3%B3n"
+                                target="_blank" class="whatsapp-link" onclick="event.stopPropagation();">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </span>
+                        <span class="nombre-paso">Cotización actualizada</span>
+                        <i class="fas fa-chevron-down paso-arrow"></i>
+                    </div>
+                    <div class="contenido-colapsable active" id="paso1">
+                        <div class="descripcion-paso">
+                            <p><strong>Antes de iniciar cualquier trámite, verifica que tienes una cotización
+                                    vigente.</strong> Cualquier duda comercial, contacta al área correspondiente.</p>
+                            <div class="contacto-destacado azul">
+                                <span class="contacto-item">
+                                    <a href="https://wa.me/573212152214?text=Hola%2C%20requiero%20informaci%C3%B3n%20sobre%20cotizaci%C3%B3n"
+                                        target="_blank" class="telefono-boton">
+                                        <i class="fab fa-whatsapp"></i> 3212152214
+                                    </a>
+                                </span>
+                                <span class="contacto-item">
+                                    <span class="correo-item">
+                                        <i class="fas fa-envelope"></i> ventas@ipsprogresandoensalud.com
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 2: Registro y validación -->
+            <div class="bloque-capitulo">
+                <div class="titulo-capitulo"><i class="fas fa-user-plus"></i> 2. Registro y validación</div>
+                <div class="tarjeta-paso">
+                    <div class="cabecera-paso" onclick="togglePaso(this)">
+                        <span class="numero-paso">
+                            <a href="https://wa.me/573049219192?text=Hola%2C%20necesito%20ayuda%20con%20el%20registro%20en%20la%20plataforma"
+                                target="_blank" class="whatsapp-link" onclick="event.stopPropagation();">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </span>
+                        <span class="nombre-paso">Crear usuario y cargar documentos</span>
+                        <i class="fas fa-chevron-down paso-arrow"></i>
+                    </div>
+                    <div class="contenido-colapsable" id="paso2">
+                        <div class="descripcion-paso">
+                            <p>Ingresa al <strong>link oficial</strong>, crea tu usuario y contraseña. Actualiza los
+                                datos de la empresa y carga los siguientes documentos:</p>
+                            <ul style="margin-left: 1.8rem; color:#2b6224;">
+                                <li>Cámara de Comercio (vigencia no mayor a 30 días).</li>
+                                <li>RUT actualizado.</li>
+                                <li>Fotocopia del documento del Representante Legal.</li>
+                            </ul>
+
+                            <!-- PRIORIDAD AL ENLACE DE REGISTRO -->
+                            <div class="contacto-destacado rojo" style="margin-top:5px;">
+                                <span class="contacto-item">
+                                    <span class="globo-item">
+                                        <i class="fas fa-globe"></i> <a
+                                            href="https://progresandoweb.com/index.php/login"
+                                            target="_blank"><strong>progresandoweb.com/login</strong></a>
+                                    </span>
+                                </span>
+                            </div>
+                            <span class="contacto-item">
+                                <a href="https://wa.me/573049219192?text=Hola%2C%20tengo%20inconvenientes%20con%20la%20p%C3%A1gina%20de%20registro"
+                                    target="_blank" class="telefono-boton">
+                                    <i class="fab fa-whatsapp"></i> 3043219192
+                                </a> <span style="margin-left: 8px;">(inconvenientes con la página)</span>
+                            </span>
+
+                            <div class="nota-informativa"><i class="fas fa-info-circle"></i> Este número también sirve
+                                para recuperar acceso a la plataforma.</div>
+
+                            <!-- RECURSOS: videos y manual -->
+                            <div class="recursos-paso">
+                                <div class="videos-grid">
+                                    <div class="video-card">
+                                        <video controls preload="metadata">
+                                            <source
+                                                src="acceso/VIDEOS/INSTRUCTIVO DE COMO INGRESAR A NUESTRA PAGINA WEB.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                        <div class="video-titulo"><i class="fas fa-globe" style="color:#FFA000;"></i>
+                                            INGRESAR A PÁGINA WEB.mp4</div>
+                                    </div>
+                                    <div class="video-card">
+                                        <video controls preload="metadata">
+                                            <source
+                                                src="acceso/VIDEOS/INSTRUCTIVO DE COMO DESCARGAR SUS CERTIFICADOS MEDICOS.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                        <div class="video-titulo"><i class="fas fa-file-medical"
+                                                style="color:#D32F2F;"></i> DESCARGAR CERTIFICADOS MEDICOS.mp4</div>
+                                    </div>
+                                    <div class="video-card">
+                                        <video controls preload="metadata">
+                                            <source
+                                                src="acceso/VIDEOS/INSTRUCTIVO DE COMO DESCARGAR DOCUMENTOS LEGALES.mp4"
+                                                type="video/mp4">
+                                        </video>
+                                        <div class="video-titulo"><i class="fas fa-download" style="color:#1976D2;"></i>
+                                            DESCARGAR DOCUMENTOS LEGALES.mp4</div>
+                                    </div>
+                                </div>
+                                <div class="docs-lista">
+                                    <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                                            href="acceso/VIDEOS/Progresando Web Manual de Usuarios.pdf"
+                                            target="_blank">Manual de Usuarios.pdf</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 3: Comercial y facturación (ACORDEÓN) -->
+            <div class="bloque-capitulo">
+                <div class="titulo-capitulo"><i class="fas fa-handshake"></i> 3. Comercial y facturación</div>
+                <div class="tarjeta-paso">
+                    <div class="cabecera-paso" onclick="togglePaso(this)">
+                        <span class="numero-paso">
+                            <a href="https://wa.me/573173493236?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20opciones%20de%20pago"
+                                target="_blank" class="whatsapp-link" onclick="event.stopPropagation();">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </span>
+                        <span class="nombre-paso">Opciones de pago y activación</span>
+                        <i class="fas fa-chevron-down paso-arrow"></i>
+                    </div>
+                    <div class="contenido-colapsable" id="paso3">
+                        <div class="descripcion-paso">
+                            <p>Selecciona la modalidad de pago acordada con el área comercial. Cada opción tiene
+                                instrucciones específicas.</p>
+
+                            <!-- OPCIÓN CONTADO EMPRESA -->
+                            <div class="opcion-pago">
+                                <div class="opcion-header" onclick="toggleOpcion(this)">
+                                    <i class="fas fa-building"></i> Contado empresa
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="opcion-contenido">
+                                    <p><strong>Debe enviar:</strong></p>
+                                    <ul style="margin-left:1.8rem; margin-bottom:1rem;">
+                                        <li>Soporte de pago</li>
+                                        <li>RUT</li>
+                                        <li>Orden de servicios (descargar modelo abajo)</li>
+                                    </ul>
+                                    <p>Enviar al correo: <strong>autorizacionesipsprogresando@gmail.com</strong></p>
+                                    <p>Una vez enviado, puede proceder a enviar a los trabajadores. El correo es solo
+                                        recepción de órdenes.</p>
+
+                                    <!-- MODELO DE ORDEN DE SERVICIO -->
+                                    <div class="docs-lista" style="margin: 12px 0;">
+                                        <span class="doc-item excel"><i class="fas fa-file-excel"></i> <a
+                                                href="acceso/MODELO DE ORDEN DE SERVICIO.xlsx" target="_blank">MODELO DE
+                                                ORDEN DE SERVICIO.xlsx</a></span>
+                                    </div>
+
+                                    <!-- FACTURACIÓN -->
+                                    <div style="background:#e9f2e2; border-radius:24px; padding:1rem; margin:12px 0;">
+                                        <h4 style="color:#1d5317; margin-bottom:8px;"><i
+                                                class="fas fa-file-invoice"></i> Emisión y pago de factura</h4>
+                                        <p>La factura se emite <strong>un día hábil después del servicio</strong>. Para
+                                            pagos, abajo encontrarás las certificaciones bancarias autorizadas.</p>
+                                        <div class="contacto-destacado rojo"
+                                            style="margin:8px 0; padding:0.8rem 1.2rem;">
+                                            <span class="contacto-item">
+                                                <a href="https://wa.me/573160253441?text=Hola%2C%20consulta%20sobre%20facturaci%C3%B3n"
+                                                    target="_blank" class="telefono-boton">
+                                                    <i class="fab fa-whatsapp"></i> 3160253441
+                                                </a>
+                                            </span>
+                                            <span class="contacto-item">
+                                                <span class="correo-item">
+                                                    <i class="fas fa-envelope"></i>
+                                                    contabilidad@ipsprogresandoensalud.com
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="docs-lista" style="margin-top:8px;">
+                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                                                    href="acceso/CERTIFICACIONES BANCARIAS/RUT Y CERTIFICACION DAVIVIENDA.pdf"
+                                                    target="_blank">RUT Y CERTIFICACION DAVIVIENDA.pdf</a></span>
+                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                                                    href="acceso/CERTIFICACIONES BANCARIAS/QR_0014818827.pdf"
+                                                    target="_blank">QR DAVIVIENDA Y LLAVE.pdf</a></span>
+                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                                                    href="acceso/CERTIFICACIONES BANCARIAS/REGIMEN ZESE 50 Retencion 1.pdf"
+                                                    target="_blank">REGIMEN ZESE 50% Retencion 1%.pdf</a></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="contacto-universal">
+                                        <i class="fas fa-question-circle" style="color:#FFA000;"></i>
+                                        <span>Cualquier duda sobre este método, comunícate al</span>
+                                        <a href="https://wa.me/573173493236?text=Hola%2C%20duda%20sobre%20contado%20empresa"
+                                            target="_blank" class="telefono-boton">
+                                            <i class="fab fa-whatsapp"></i> 3173493236
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- OPCIÓN CONTADO TRABAJADOR (ACTUALIZADO CON ORDEN DE SERVICIO) -->
+                            <div class="opcion-pago">
+                                <div class="opcion-header" onclick="toggleOpcion(this)">
+                                    <i class="fas fa-user"></i> Contado trabajador
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="opcion-contenido">
+                                    <p>El pago se debe realizar <strong>directamente en las instalaciones de la
+                                            IPS</strong>, antes de prestar el servicio.</p>
+                                    <p><strong>Adicionalmente, debe enviar la orden de servicios</strong> al correo
+                                        <strong>autorizacionesipsprogresando@gmail.com</strong> antes de la atención.
+                                    </p>
+
+                                    <!-- MODELO DE ORDEN DE SERVICIO TAMBIÉN AQUÍ -->
+                                    <div class="docs-lista" style="margin: 12px 0;">
+                                        <span class="doc-item excel"><i class="fas fa-file-excel"></i> <a
+                                                href="acceso/MODELO DE ORDEN DE SERVICIO.xlsx" target="_blank">MODELO DE
+                                                ORDEN DE SERVICIO.xlsx</a></span>
+                                    </div>
+
+                                    <p>Dirección: Calle 21a # 0b-75, Barrio Blanco.</p>
+                                    <div class="contacto-universal">
+                                        <i class="fas fa-question-circle" style="color:#FFA000;"></i>
+                                        <span>Cualquier duda sobre este método, comunícate al</span>
+                                        <a href="https://wa.me/573173493236?text=Hola%2C%20duda%20sobre%20contado%20trabajador"
+                                            target="_blank" class="telefono-boton">
+                                            <i class="fab fa-whatsapp"></i> 3173493236
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- OPCIÓN OTRAS FORMAS DE PAGO -->
+                            <div class="opcion-pago">
+                                <div class="opcion-header" onclick="toggleOpcion(this)">
+                                    <i class="fas fa-credit-card"></i> Otras formas de pago
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="opcion-contenido">
+                                    <p>Para consultar otros métodos de pago (convenios, etc.), comunícate al número:</p>
+                                    <div class="contacto-universal">
+                                        <i class="fas fa-phone-alt" style="color:#1976D2;"></i>
+                                        <a href="https://wa.me/573173493236?text=Hola%2C%20consulta%20sobre%20otras%20formas%20de%20pago"
+                                            target="_blank" class="telefono-boton">
+                                            <i class="fab fa-whatsapp"></i> 3173493236
+                                        </a> <span style="margin-left: 8px;">(área comercial)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- FACTURACIÓN -->
+            <div style="background:#e9f2e2; border-radius:24px; padding:1rem; margin:12px 0;">
+                <h4 style="color:#1d5317; margin-bottom:8px;"><i class="fas fa-file-invoice"></i> Emisión y pago de
+                    factura</h4>
+                <p>La factura se emite <strong>un día hábil después del servicio</strong>. Para
+                    pagos, abajo encontrarás las certificaciones bancarias autorizadas.</p>
+                <div class="contacto-destacado rojo" style="margin:8px 0; padding:0.8rem 1.2rem;">
+                    <span class="contacto-item">
+                        <a href="https://wa.me/573160253441?text=Hola%2C%20consulta%20sobre%20facturaci%C3%B3n"
+                            target="_blank" class="telefono-boton">
+                            <i class="fab fa-whatsapp"></i> 3160253441
+                        </a>
+                    </span>
+                    <span class="contacto-item">
+                        <span class="correo-item">
+                            <i class="fas fa-envelope"></i>
+                            contabilidad@ipsprogresandoensalud.com
+                        </span>
+                    </span>
+                </div>
+                <div class="docs-lista" style="margin-top:8px;">
+                    <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                            href="acceso/CERTIFICACIONES BANCARIAS/RUT Y CERTIFICACION DAVIVIENDA.pdf"
+                            target="_blank">RUT Y CERTIFICACION DAVIVIENDA.pdf</a></span>
+                    <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                            href="acceso/CERTIFICACIONES BANCARIAS/QR_0014818827.pdf" target="_blank">QR DAVIVIENDA Y
+                            LLAVE.pdf</a></span>
+                    <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
+                            href="acceso/CERTIFICACIONES BANCARIAS/REGIMEN ZESE 50 Retencion 1.pdf"
+                            target="_blank">REGIMEN ZESE 50% Retencion 1%.pdf</a></span>
+                </div>
+            </div>
+
+            <!-- CAPÍTULO 4: Certificados -->
+            <div class="bloque-capitulo">
+                <div class="titulo-capitulo"><i class="fas fa-certificate"></i> 4. Certificados y resultados</div>
+                <div class="tarjeta-paso">
+                    <div class="cabecera-paso" onclick="togglePaso(this)">
+                        <span class="numero-paso">
+                            <a href="https://wa.me/573160253447?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20certificados"
+                                target="_blank" class="whatsapp-link" onclick="event.stopPropagation();">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </span>
+                        <span class="nombre-paso">Descarga de certificados</span>
+                        <i class="fas fa-chevron-down paso-arrow"></i>
+                    </div>
+                    <div class="contenido-colapsable" id="paso4">
+                        <div class="descripcion-paso">
+                            <p>Los certificados se envían al correo indicado por la empresa cliente. También pueden
+                                descargarse en la <strong>PLATAFORMA WEB</strong> con tu usuario y contraseña.</p>
+                            <div class="contacto-destacado rojo">
+                                <span class="contacto-item">
+                                    <span class="globo-item">
+                                        <i class="fas fa-globe"></i> <a
+                                            href="https://progresandoweb.com/index.php/login"
+                                            target="_blank">progresandoweb.com/login</a>
+                                    </span>
+                                </span>
+                                <div class="nota-informativa"><i class="fas fa-phone-alt"></i> Soporte acceso para
+                                    plataforma WEB:
+                                    <a href="https://wa.me/573049219192?text=Hola%2C%20problemas%20con%20acceso%20a%20plataforma"
+                                        target="_blank" class="telefono-boton" style="margin-left: 8px;">
+                                        <i class="fab fa-whatsapp"></i> 3043219192
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="contacto-destacado rojo">
+                                <span>Puedes solicitar el envío de los certificados al siguiente contacto</span>
+                                <span class="contacto-item">
+                                    <a href="https://wa.me/573160253447?text=Hola%2C%20consulta%20sobre%20certificados%20m%C3%A9dicos"
+                                        target="_blank" class="telefono-boton">
+                                        <i class="fab fa-whatsapp"></i> 3160253447
+                                    </a>
+                                </span>
+                                <span class="contacto-item">
+                                    <span class="correo-item">
+                                        <i class="fas fa-envelope"></i> coord.serviciosmedicosips@gmail.com
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLOQUE INFORMACIÓN SEDE -->
+            <div class="sede-info">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.8rem;">
+                    <i class="fas fa-map-marked-alt" style="font-size:2.2rem; color:#FFA000;"></i>
+                    <h2 style="color:#195015; font-size:1.6rem;">Atención presencial y reglas clave</h2>
+                </div>
+
+                <div class="recordatorio-especial">
+                    <i class="fas fa-exclamation-triangle" style="font-size:1.6rem;"></i>
+                    <span>¡IMPORTANTE!</span> Presentarse con documento de identidad, sin acompañantes a excepción de
+                    menores de edad.
+                </div>
+
+                <div class="grid-sede">
+                    <!-- Enlace de dirección mejorado como botón -->
+                    <a href="https://www.google.com/maps/place/Ips+Progresando+En+Salud/@7.8811617,-72.4982139,14.96z/data=!4m6!3m5!1s0x8e664598b7e2b963:0x431474e35d1d32ce!8m2!3d7.875924!4d-72.498766!16s%2Fg%2F11g9q4k6xl?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank" class="direccion-boton">
+                        <i class="fas fa-map-pin" style="color:#FFA000;"></i>
+                        <div>
+                            <h4 style="font-size:1rem;">Dirección</h4>
+                            <p style="font-size:0.9rem;"><strong>Calle 21a # 0b-75, Barrio Blanco, Cúcuta Norte de
+                                    Santander</strong><br>Orden de
+                                llegada.</p>
+                        </div>
+                    </a>
+                    <div class="sede-card">
+                        <i class="fas fa-clock" style="color:#1976D2;"></i>
+                        <div>
+                            <h4 style="font-size:1rem;">Horario</h4>
+                            <p style="font-size:0.9rem;"><strong>Lun-vie:</strong> 6:00 a.m - 12:00 m y 2:00 p.m - 5:00
+                                p.m<br><strong>Sáb:</strong> 6:00 a.m - 12:00 m</p>
+                        </div>
+                    </div>
+                    <div class="sede-card">
+                        <i class="fas fa-envelope-open-text" style="color:#D32F2F;"></i>
+                        <div>
+                            <h4 style="font-size:1rem;">Atención general</h4>
+                            <p style="font-size:0.9rem;">Correos por área o en sede.</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div style="display:flex; justify-content:space-between; flex-wrap:wrap; font-size:0.9rem;">
+                    <span><i class="fas fa-phone-alt" style="color:#1976D2;"></i>
+                        <a href="https://wa.me/573049219192?text=Hola%2C%20soporte%20general" target="_blank"
+                            class="telefono-boton">
+                            <i class="fab fa-whatsapp"></i> 3043219192
+                        </a> (Soporte General)
+                    </span>
+                    <span><i class="fas fa-calendar-alt" style="color:#FFA000;"></i> Guía actualizada 2026</span>
+                </div>
+            </div>
+
+            <!-- PIE FINAL -->
+            <div
+                style="margin-top:1.5rem; text-align:center; color:#4c7543; border-top:2px solid #d2e7c5; padding-top:1.2rem; font-size:0.9rem;">
+                <i class="fas fa-check-circle" style="color:#639A33;"></i> Cada número es un enlace a WhatsApp. Haz clic
+                en los íconos <i class="fab fa-whatsapp"></i> para contactar.
+            </div>
+        </div> <!-- fin contenido-principal -->
+    </div> <!-- fin documento-ips -->
+
+    <script>
+        function toggleOpcion(header) {
+            var contenido = header.nextElementSibling;
+            contenido.classList.toggle('active');
+            // Rotar flecha
+            var icon = header.querySelector('.fa-chevron-down');
+            if (contenido.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function togglePaso(header) {
+            var contenido = header.nextElementSibling;
+            if (contenido && contenido.classList.contains('contenido-colapsable')) {
+                contenido.classList.toggle('active');
+                // Rotar flecha del paso
+                var arrow = header.querySelector('.paso-arrow');
+                if (contenido.classList.contains('active')) {
+                    arrow.style.transform = 'rotate(180deg)';
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+
+        // Prevenir que al hacer clic en los enlaces dentro del header se cierre el paso
+        document.querySelectorAll('.cabecera-paso a').forEach(link => {
+            link.addEventListener('click', (e) => e.stopPropagation());
+        });
+    </script>
+</body>
+
+</html>
