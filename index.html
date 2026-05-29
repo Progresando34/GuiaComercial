@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Bienvenido · IPS Progresando en Salud</title>
-    <!-- Font Awesome 6 (mismo que usas en las guías) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -27,7 +27,7 @@
             padding: 1rem;
         }
 
-        /* contenedor principal - replicando el estilo de las guías */
+        /* contenedor principal */
         .bienvenida-container {
             max-width: 900px;
             width: 100%;
@@ -38,7 +38,7 @@
             border: 1px solid rgba(99, 154, 51, 0.2);
         }
 
-        /* HEADER como el de tus documentos */
+        /* HEADER */
         .header-bienvenida {
             background: linear-gradient(145deg, #518a2a 0%, #2e681d 100%);
             padding: 2.5rem 2rem 2rem 2rem;
@@ -103,7 +103,7 @@
             }
         }
 
-        /* BARRA DE COLORES (indicadores) - igual a las guías */
+        /* BARRA DE COLORES (indicadores) - AHORA BOTONES */
         .indicadores-bienvenida {
             background: #edf5e6;
             padding: 1rem 1.5rem;
@@ -112,38 +112,59 @@
             justify-content: center;
             gap: 15px 25px;
             border-bottom: 2px solid #c2ddb2;
-            font-weight: 500;
-            font-size: 0.9rem;
         }
 
         @media (min-width: 768px) {
             .indicadores-bienvenida {
                 padding: 1rem 2.5rem;
                 gap: 25px 40px;
-                font-size: 1rem;
             }
         }
 
-        .indicador-b {
+        /* ESTILO DE BOTONES PARA LOS INDICADORES */
+        .btn-indicador {
             display: flex;
             align-items: center;
             gap: 8px;
             background: white;
-            padding: 0.4rem 1.2rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 100px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1d5317;
         }
 
-        .indicador-b.azul i {
+        .btn-indicador:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-indicador:active {
+            transform: translateY(0);
+        }
+
+        .btn-indicador.azul i:first-child {
             color: #1976D2;
         }
 
-        .indicador-b.rojo i {
+        .btn-indicador.rojo i:first-child {
             color: #D32F2F;
         }
 
-        .indicador-b.amarillo i {
+        .btn-indicador.amarillo i:first-child {
             color: #FFA000;
+        }
+
+        @media (min-width: 768px) {
+            .btn-indicador {
+                padding: 0.7rem 2rem;
+                font-size: 1rem;
+                gap: 10px;
+            }
         }
 
         /* CUERPO PRINCIPAL */
@@ -212,7 +233,6 @@
             }
         }
 
-        /* ESTILO DE CADA BOTÓN (basado en los botones de tus guías) */
         .boton-sede {
             flex: 1 1 250px;
             max-width: 320px;
@@ -238,7 +258,6 @@
             background: white;
         }
 
-        /* CÍRCULO CON ICONO (similar a los números de paso) */
         .icono-sede {
             font-size: 2.5rem;
             font-weight: 800;
@@ -267,7 +286,6 @@
             }
         }
 
-        /* TEXTO PRINCIPAL DEL BOTÓN */
         .nombre-sede {
             font-size: 1.8rem;
             font-weight: 700;
@@ -281,7 +299,6 @@
             }
         }
 
-        /* PEQUEÑA DESCRIPCIÓN (opcional, para dar contexto) */
         .sede-label {
             font-size: 1rem;
             color: #518a2a;
@@ -291,7 +308,6 @@
             font-weight: 500;
         }
 
-        /* NOTA INFORMATIVA (estilo de las guías) */
         .nota-informativa {
             background: #fffae0;
             border-left: 6px solid #FFC107;
@@ -306,7 +322,6 @@
             text-align: left;
         }
 
-        /* PIE FINAL (como en las guías) */
         .pie-bienvenida {
             margin-top: 2.5rem;
             text-align: center;
@@ -319,13 +334,219 @@
         .pie-bienvenida i {
             color: #639A33;
         }
+
+        /* ========== MODAL / VENTANA FLOTANTE ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header.azul {
+            background: linear-gradient(135deg, #1976D2, #0d47a1);
+        }
+
+        .modal-header.rojo {
+            background: linear-gradient(135deg, #D32F2F, #b71c1c);
+        }
+
+        .modal-header.amarillo {
+            background: linear-gradient(135deg, #FFA000, #e65100);
+        }
+
+        .modal-header h2 {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-header h2 i {
+            font-size: 1.8rem;
+        }
+
+        .close-modal {
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 1.5rem 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        /* Tabs dentro del modal para mostrar las dos sedes */
+        .tabs-sedes {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            background: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.2s;
+            color: #666;
+        }
+
+        .tab-btn.active {
+            background: #518a2a;
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #e1f0d9;
+            color: #1d5317;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .info-sede {
+            background: #f5f5f5;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-sede h3 {
+            color: #1d5317;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contacto-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contacto-item-modal {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .contacto-item-modal i {
+            font-size: 1.2rem;
+        }
+
+        .contacto-link {
+            text-decoration: none;
+            color: #1976D2;
+            font-weight: 500;
+        }
+
+        .contacto-link:hover {
+            text-decoration: underline;
+        }
+
+        .horario-item {
+            padding: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 600px) {
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+            .modal-header h2 {
+                font-size: 1.2rem;
+            }
+            .modal-body {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <div class="bienvenida-container">
-        <!-- HEADER con el mismo estilo de las guías -->
+        <!-- HEADER -->
         <div class="header-bienvenida">
             <h1>
                 <i class="fas fa-hand-holding-heart"></i> 
@@ -337,14 +558,26 @@
             </p>
         </div>
 
-        <!-- BARRA DE COLORES (mismos indicadores que en tus documentos) -->
+        <!-- BARRA DE COLORES - AHORA SON BOTONES CON MODAL -->
         <div class="indicadores-bienvenida">
-            <div class="indicador-b azul"><i class="fas fa-circle"></i> Teléfonos y soporte</div>
-            <div class="indicador-b rojo"><i class="fas fa-circle"></i> Correos electrónicos</div>
-            <div class="indicador-b amarillo"><i class="fas fa-circle"></i> Enlaces y horarios</div>
+            <button class="btn-indicador azul" onclick="abrirModal('telefonos')">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-phone-alt"></i>
+                Teléfonos y soporte
+            </button>
+            <button class="btn-indicador rojo" onclick="abrirModal('correos')">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-envelope"></i>
+                Correos electrónicos
+            </button>
+            <button class="btn-indicador amarillo" onclick="abrirModal('enlaces')">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-link"></i>
+                Enlaces y horarios
+            </button>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL DE BIENVENIDA -->
+        <!-- CONTENIDO PRINCIPAL -->
         <div class="contenido-bienvenida">
             <h2>
                 <i class="fas fa-location-dot"></i> 
@@ -356,9 +589,7 @@
                 pasos de registro, opciones de pago, videos y contactos directos.
             </p>
 
-            <!-- CONTENEDOR DE LOS DOS BOTONES -->
             <div class="botones-sedes">
-                <!-- BOTÓN CÚCUTA -->
                 <a href="cucuta.html" class="boton-sede" target="_self">
                     <span class="icono-sede">
                         <i class="fa-solid fa-hospital"></i>
@@ -370,7 +601,6 @@
                     </span>
                 </a>
 
-                <!-- BOTÓN OCAÑA -->
                 <a href="ocana.html" class="boton-sede" target="_self">
                     <span class="icono-sede">
                         <i class="fa-solid fa-clinic-medical"></i>
@@ -383,21 +613,314 @@
                 </a>
             </div>
 
-            <!-- NOTA DE AYUDA (estilo de las guías) -->
             <div class="nota-informativa">
                 <i class="fas fa-info-circle" style="color:#FFA000;"></i> 
                 Al hacer clic en un botón serás redirigido a la guía correspondiente. 
                 Ten en cuenta que los números de WhatsApp de contacto son diferentes para cada sede.
             </div>
 
-            <!-- PIE DE PÁGINA (igual al de las guías) -->
             <div class="pie-bienvenida">
                 <i class="fas fa-check-circle"></i> 
                 Guías actualizadas 2026 · Haz clic en los íconos <i class="fab fa-whatsapp"></i> para contactar
             </div>
-        </div> <!-- fin contenido-bienvenida -->
-    </div> <!-- fin bienvenida-container -->
+        </div>
+    </div>
 
+    <!-- ========== MODAL TELÉFONOS Y SOPORTE ========== -->
+    <div id="modalTelefonos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header azul">
+                <h2><i class="fas fa-phone-alt"></i> Teléfonos y Soporte</h2>
+                <span class="close-modal" onclick="cerrarModal('modalTelefonos')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tabs-sedes">
+                    <button class="tab-btn active" onclick="cambiarTab('telefonos', 'cucuta')">Cúcuta</button>
+                    <button class="tab-btn" onclick="cambiarTab('telefonos', 'ocana')">Ocaña</button>
+                </div>
+                <div id="telefonos-cucuta" class="tab-content active">
+                    <div class="info-sede">
+                        <h3><i class="fas fa-headset"></i> Soporte y atención Cúcuta</h3>
+                        <div class="contacto-lista">
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Área Comercial / Cotizaciones:</strong>
+                                <a href="https://wa.me/573212152214" target="_blank" class="contacto-link">321 2152214</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Soporte técnico / Pagos:</strong>
+                                <a href="https://wa.me/573173493236" target="_blank" class="contacto-link">317 3493236</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Plataforma WEB (inconvenientes):</strong>
+                                <a href="https://wa.me/573049219192" target="_blank" class="contacto-link">304 3219192</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Certificados médicos:</strong>
+                                <a href="https://wa.me/573160253447" target="_blank" class="contacto-link">316 0253447</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Facturación:</strong>
+                                <a href="https://wa.me/573160253441" target="_blank" class="contacto-link">316 0253441</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-phone" style="color:#1976D2;"></i>
+                                <strong>Teléfono fijo:</strong>
+                                <span>6075489755</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="telefonos-ocana" class="tab-content">
+                    <div class="info-sede">
+                        <h3><i class="fas fa-headset"></i> Soporte y atención Ocaña</h3>
+                        <div class="contacto-lista">
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Área Comercial / Cotizaciones:</strong>
+                                <a href="https://wa.me/573155801122" target="_blank" class="contacto-link">315 5801122</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Soporte técnico / Pagos:</strong>
+                                <a href="https://wa.me/573155801122" target="_blank" class="contacto-link">315 5801122</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Plataforma WEB (inconvenientes):</strong>
+                                <a href="https://wa.me/573049219192" target="_blank" class="contacto-link">304 3219192</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Certificados médicos:</strong>
+                                <a href="https://wa.me/573160253447" target="_blank" class="contacto-link">316 0253447</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                                <strong>Facturación:</strong>
+                                <a href="https://wa.me/573160253441" target="_blank" class="contacto-link">316 0253441</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CORREOS ELECTRÓNICOS ========== -->
+    <div id="modalCorreos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rojo">
+                <h2><i class="fas fa-envelope"></i> Correos electrónicos</h2>
+                <span class="close-modal" onclick="cerrarModal('modalCorreos')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tabs-sedes">
+                    <button class="tab-btn active" onclick="cambiarTab('correos', 'cucuta')">Cúcuta</button>
+                    <button class="tab-btn" onclick="cambiarTab('correos', 'ocana')">Ocaña</button>
+                </div>
+                <div id="correos-cucuta" class="tab-content active">
+                    <div class="info-sede">
+                        <h3><i class="fas fa-envelope-open-text"></i> Correos por área - Cúcuta</h3>
+                        <div class="contacto-lista">
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Ventas / Cotizaciones:</strong>
+                                <a href="mailto:ventas@ipsprogresandoensalud.com" class="contacto-link">ventas@ipsprogresandoensalud.com</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Autorizaciones / Órdenes:</strong>
+                                <a href="mailto:autorizacionesipsprogresando@gmail.com" class="contacto-link">autorizacionesipsprogresando@gmail.com</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Contabilidad / Facturación:</strong>
+                                <a href="mailto:contabilidad@ipsprogresandoensalud.com" class="contacto-link">contabilidad@ipsprogresandoensalud.com</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Certificados médicos:</strong>
+                                <a href="mailto:coord.serviciosmedicosips@gmail.com" class="contacto-link">coord.serviciosmedicosips@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="correos-ocana" class="tab-content">
+                    <div class="info-sede">
+                        <h3><i class="fas fa-envelope-open-text"></i> Correos por área - Ocaña</h3>
+                        <div class="contacto-lista">
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Ventas / Cotizaciones:</strong>
+                                <a href="mailto:comercialocanaprogresando@gmail.com" class="contacto-link">comercialocanaprogresando@gmail.com</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Autorizaciones / Órdenes:</strong>
+                                <a href="mailto:ordenes.ocana.progresando@gmail.com" class="contacto-link">ordenes.ocana.progresando@gmail.com</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Contabilidad / Facturación:</strong>
+                                <a href="mailto:contabilidad@ipsprogresandoensalud.com" class="contacto-link">contabilidad@ipsprogresandoensalud.com</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                                <strong>Certificados médicos:</strong>
+                                <a href="mailto:coord.serviciosmedicosips@gmail.com" class="contacto-link">coord.serviciosmedicosips@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL ENLACES Y HORARIOS ========== -->
+    <div id="modalEnlaces" class="modal">
+        <div class="modal-content">
+            <div class="modal-header amarillo">
+                <h2><i class="fas fa-link"></i> Enlaces y horarios</h2>
+                <span class="close-modal" onclick="cerrarModal('modalEnlaces')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tabs-sedes">
+                    <button class="tab-btn active" onclick="cambiarTab('enlaces', 'cucuta')">Cúcuta</button>
+                    <button class="tab-btn" onclick="cambiarTab('enlaces', 'ocana')">Ocaña</button>
+                </div>
+                <div id="enlaces-cucuta" class="tab-content active">
+                    <div class="info-sede">
+                        <h3><i class="fas fa-globe"></i> Enlaces importantes - Cúcuta</h3>
+                        <div class="contacto-lista">
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-globe" style="color:#FFA000;"></i>
+                                <strong>Plataforma WEB:</strong>
+                                <a href="https://progresandoweb.com/index.php/login" target="_blank" class="contacto-link">progresandoweb.com/login</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-map-marker-alt" style="color:#FFA000;"></i>
+                                <strong>Ubicación:</strong>
+                                <a href="https://www.google.com/maps/place/Ips+Progresando+En+Salud/@7.8811617,-72.4982139,14.96z/data=!4m6!3m5!1s0x8e664598b7e2b963:0x431474e35d1d32ce!8m2!3d7.875924!4d-72.498766!16s%2Fg%2F11g9q4k6xl" target="_blank" class="contacto-link">Ver en Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-sede">
+                        <h3><i class="fas fa-clock"></i> Horarios de atención - Cúcuta</h3>
+                        <div class="horario-item"><strong>Lunes a viernes:</strong> 6:00 a.m - 12:00 m / 2:00 p.m - 5:00 p.m</div>
+                        <div class="horario-item"><strong>Sábados:</strong> 6:00 a.m - 12:00 m</div>
+                        <div class="horario-item"><strong>Domingos y festivos:</strong> Cerrado</div>
+                        <div class="horario-item"><strong>Dirección:</strong> Calle 21a # 0b-75, Barrio Blanco</div>
+                    </div>
+                </div>
+                <div id="enlaces-ocana" class="tab-content">
+                    <div class="info-sede">
+                        <h3><i class="fas fa-globe"></i> Enlaces importantes - Ocaña</h3>
+                        <div class="contacto-lista">
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-globe" style="color:#FFA000;"></i>
+                                <strong>Plataforma WEB:</strong>
+                                <a href="https://progresandoweb.com/index.php/login" target="_blank" class="contacto-link">progresandoweb.com/login</a>
+                            </div>
+                            <div class="contacto-item-modal">
+                                <i class="fas fa-map-marker-alt" style="color:#FFA000;"></i>
+                                <strong>Ubicación:</strong>
+                                <a href="https://www.google.com/maps/@8.2451669,-73.3558291,3a,74.8y,252.65h,86.52t/data=!3m7!1e1!3m5!1scI5IiQsPkBDfIDppNKxGlw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D3.4780961570130984%26panoid%3DcI5IiQsPkBDfIDppNKxGlw%26yaw%3D252.64920317645505!7i16384!8i8192" target="_blank" class="contacto-link">Ver en Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-sede">
+                        <h3><i class="fas fa-clock"></i> Horarios de atención - Ocaña</h3>
+                        <div class="horario-item"><strong>Lunes a viernes:</strong> 6:00 a.m - 12:00 m / 2:00 p.m - 5:00 p.m</div>
+                        <div class="horario-item"><strong>Sábados:</strong> 6:00 a.m - 12:00 m</div>
+                        <div class="horario-item"><strong>Domingos y festivos:</strong> Cerrado</div>
+                        <div class="horario-item"><strong>Dirección:</strong> Calle 11 #24-65 Barrio Las Llanadas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Abrir modal
+        function abrirModal(tipo) {
+            let modalId = '';
+            if (tipo === 'telefonos') modalId = 'modalTelefonos';
+            else if (tipo === 'correos') modalId = 'modalCorreos';
+            else if (tipo === 'enlaces') modalId = 'modalEnlaces';
+            
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Cerrar modal
+        function cerrarModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Cambiar pestaña dentro del modal
+        function cambiarTab(modalTipo, sede) {
+            const modalId = modalTipo === 'telefonos' ? 'modalTelefonos' : (modalTipo === 'correos' ? 'modalCorreos' : 'modalEnlaces');
+            const modal = document.getElementById(modalId);
+            
+            if (!modal) return;
+            
+            // Actualizar tabs
+            const tabs = modal.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Activar el tab clickeado
+            const clickedTab = Array.from(tabs).find(tab => tab.textContent.toLowerCase().includes(sede));
+            if (clickedTab) clickedTab.classList.add('active');
+            
+            // Ocultar todos los contenidos
+            const contents = modal.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Mostrar el contenido correspondiente
+            const targetContent = modal.querySelector(`#${modalTipo}-${sede}`);
+            if (targetContent) targetContent.classList.add('active');
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

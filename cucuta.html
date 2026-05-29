@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Guía Progresando en Salud · Vinculación y Facturación</title>
+    <title>Guía Progresando en Salud · Vinculación y Facturación Cúcuta</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -112,7 +112,7 @@
             color: #FFD966;
         }
 
-        /* BARRA DE COLORES (indicadores) */
+        /* BARRA DE COLORES (indicadores) - AHORA BOTONES */
         .indicadores {
             background: #edf5e6;
             padding: 0.8rem 1.5rem;
@@ -120,47 +120,59 @@
             flex-wrap: wrap;
             gap: 12px 20px;
             border-bottom: 2px solid #c2ddb2;
-            font-weight: 500;
-            font-size: 0.8rem;
         }
 
         @media (min-width: 768px) {
             .indicadores {
                 padding: 0.8rem 2.5rem;
                 gap: 20px 35px;
-                font-size: 0.9rem;
             }
         }
 
-        .indicador {
+        /* ESTILO DE BOTONES PARA LOS INDICADORES */
+        .btn-indicador {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             background: white;
-            padding: 0.25rem 1rem;
+            padding: 0.5rem 1.2rem;
             border-radius: 100px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
-            white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1d5317;
         }
 
-        @media (max-width: 480px) {
-            .indicador {
-                white-space: normal;
-                font-size: 0.75rem;
-                padding: 0.25rem 0.8rem;
-            }
+        .btn-indicador:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .indicador.azul i {
+        .btn-indicador:active {
+            transform: translateY(0);
+        }
+
+        .btn-indicador.azul i:first-child {
             color: #1976D2;
         }
 
-        .indicador.rojo i {
+        .btn-indicador.rojo i:first-child {
             color: #D32F2F;
         }
 
-        .indicador.amarillo i {
+        .btn-indicador.amarillo i:first-child {
             color: #FFA000;
+        }
+
+        @media (min-width: 768px) {
+            .btn-indicador {
+                padding: 0.6rem 1.8rem;
+                font-size: 0.95rem;
+                gap: 10px;
+            }
         }
 
         /* CONTENIDO principal */
@@ -1052,6 +1064,179 @@
         strong {
             word-break: break-word;
         }
+
+        /* ========== MODAL / VENTANA FLOTANTE ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header.azul {
+            background: linear-gradient(135deg, #1976D2, #0d47a1);
+        }
+
+        .modal-header.rojo {
+            background: linear-gradient(135deg, #D32F2F, #b71c1c);
+        }
+
+        .modal-header.amarillo {
+            background: linear-gradient(135deg, #FFA000, #e65100);
+        }
+
+        .modal-header h2 {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-header h2 i {
+            font-size: 1.6rem;
+        }
+
+        .close-modal {
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 1.5rem 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .info-sede-modal {
+            background: #f5f5f5;
+            border-radius: 16px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-sede-modal h3 {
+            color: #1d5317;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-left: 4px solid #639A33;
+            padding-left: 10px;
+        }
+
+        .contacto-lista-modal {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contacto-item-modal {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .contacto-item-modal i {
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .contacto-link {
+            text-decoration: none;
+            color: #1976D2;
+            font-weight: 500;
+        }
+
+        .contacto-link:hover {
+            text-decoration: underline;
+        }
+
+        .horario-item-modal {
+            padding: 0.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .horario-item-modal:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+
+            .modal-header h2 {
+                font-size: 1.1rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -1060,19 +1245,25 @@
         <!-- HEADER -->
         <div class="header-principal">
             <h1><i class="fas fa-clinic-medical"></i> IPS Progresando en Salud · Guía de vinculación CÚCUTA</h1>
-            <div class="header-sub">
-                <span><i class="fas fa-check-circle"></i> Pasos obligatorios</span>
-                <span><i class="fas fa-phone-alt"></i> Contacto directo</span>
-                <span><i class="fas fa-file-pdf"></i> Formatos descargables</span>
-                <span><i class="fas fa-video"></i> Videos instructivos</span>
-            </div>
         </div>
 
-        <!-- BARRA INDICADORA DE COLORES -->
+        <!-- BARRA INDICADORA DE COLORES - AHORA BOTONES CON MODAL -->
         <div class="indicadores">
-            <div class="indicador azul"><i class="fas fa-circle"></i> Teléfonos y soporte</div>
-            <div class="indicador rojo"><i class="fas fa-circle"></i> Correos electrónicos</div>
-            <div class="indicador amarillo"><i class="fas fa-circle"></i> Enlaces, horarios, detalles</div>
+            <button class="btn-indicador azul" onclick="abrirModal('telefonos')">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-phone-alt"></i>
+                Teléfonos y soporte
+            </button>
+            <button class="btn-indicador rojo" onclick="abrirModal('correos')">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-envelope"></i>
+                Correos electrónicos
+            </button>
+            <button class="btn-indicador amarillo" onclick="abrirModal('enlaces')">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-link"></i>
+                Enlaces y horarios
+            </button>
         </div>
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -1137,7 +1328,6 @@
                                 <li>Fotocopia del documento del Representante Legal.</li>
                             </ul>
 
-                            <!-- PRIORIDAD AL ENLACE DE REGISTRO -->
                             <div class="contacto-destacado rojo" style="margin-top:5px;">
                                 <span class="contacto-item">
                                     <span class="globo-item">
@@ -1157,7 +1347,6 @@
                             <div class="nota-informativa"><i class="fas fa-info-circle"></i> Este número también sirve
                                 para recuperar acceso a la plataforma.</div>
 
-                            <!-- RECURSOS: videos y manual -->
                             <div class="recursos-paso">
                                 <div class="videos-grid">
                                     <div class="video-card">
@@ -1199,7 +1388,7 @@
                 </div>
             </div>
 
-            <!-- CAPÍTULO 3: Comercial y facturación (ACORDEÓN) -->
+            <!-- CAPÍTULO 3: Comercial y facturación -->
             <div class="bloque-capitulo">
                 <div class="titulo-capitulo"><i class="fas fa-handshake"></i> 3. Comercial y facturación</div>
                 <div class="tarjeta-paso">
@@ -1218,7 +1407,6 @@
                             <p>Selecciona la modalidad de pago acordada con el área comercial. Cada opción tiene
                                 instrucciones específicas.</p>
 
-                            <!-- OPCIÓN CONTADO EMPRESA -->
                             <div class="opcion-pago">
                                 <div class="opcion-header" onclick="toggleOpcion(this)">
                                     <i class="fas fa-building"></i> Contado empresa
@@ -1235,48 +1423,10 @@
                                     <p>Una vez enviado, puede proceder a enviar a los trabajadores. El correo es solo
                                         recepción de órdenes.</p>
 
-                                    <!-- MODELO DE ORDEN DE SERVICIO -->
                                     <div class="docs-lista" style="margin: 12px 0;">
                                         <span class="doc-item excel"><i class="fas fa-file-excel"></i> <a
                                                 href="acceso/MODELO DE ORDEN DE SERVICIO.xlsx" target="_blank">MODELO DE
                                                 ORDEN DE SERVICIO.xlsx</a></span>
-                                    </div>
-
-                                    <!-- FACTURACIÓN -->
-                                    <div style="background:#e9f2e2; border-radius:24px; padding:1rem; margin:12px 0;">
-                                        <h4 style="color:#1d5317; margin-bottom:8px;"><i
-                                                class="fas fa-file-invoice"></i> Emisión y pago de factura</h4>
-                                        <p>La factura se emite <strong>un día hábil después del servicio</strong>. Para
-                                            pagos, abajo encontrarás las certificaciones bancarias autorizadas.</p>
-                                        <div class="contacto-destacado rojo"
-                                            style="margin:8px 0; padding:0.8rem 1.2rem;">
-                                            <span class="contacto-item">
-                                                <a href="https://wa.me/573160253441?text=Hola%2C%20consulta%20sobre%20facturaci%C3%B3n"
-                                                    target="_blank" class="telefono-boton">
-                                                    <i class="fab fa-whatsapp"></i> 3160253441
-                                                </a>
-                                            </span>
-                                            <span class="contacto-item">
-                                                <span class="correo-item">
-                                                    <i class="fas fa-envelope"></i>
-                                                    contabilidad@ipsprogresandoensalud.com
-                                                </span>
-                                            </span>
-                                        </div>
-                                        <div class="docs-lista" style="margin-top:8px;">
-                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
-                                                    href="acceso/CERTIFICACIONES BANCARIAS/RUT IPS PROGRESANDO EN SALUD SAS.pdf"
-                                                    target="_blank">RUT.pdf</a></span>
-                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
-                                                    href="acceso/CERTIFICACIONES BANCARIAS/SOLO LA CERTIFICACION DAVIVIENDA.pdf"
-                                                    target="_blank">CERTIFICACION DAVIVIENDA.pdf</a></span>
-                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
-                                                    href="acceso/CERTIFICACIONES BANCARIAS/QR_0014818827.pdf"
-                                                    target="_blank">QR DAVIVIENDA Y LLAVE.pdf</a></span>
-                                            <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
-                                                    href="acceso/CERTIFICACIONES BANCARIAS/REGIMEN ZESE 50 Retencion 1.pdf"
-                                                    target="_blank">REGIMEN ZESE 50% Retencion 1%.pdf</a></span>
-                                        </div>
                                     </div>
 
                                     <div class="contacto-universal">
@@ -1290,7 +1440,6 @@
                                 </div>
                             </div>
 
-                            <!-- OPCIÓN CONTADO TRABAJADOR (ACTUALIZADO CON ORDEN DE SERVICIO) -->
                             <div class="opcion-pago">
                                 <div class="opcion-header" onclick="toggleOpcion(this)">
                                     <i class="fas fa-user"></i> Contado trabajador
@@ -1303,7 +1452,6 @@
                                         <strong>autorizacionesipsprogresando@gmail.com</strong> antes de la atención.
                                     </p>
 
-                                    <!-- MODELO DE ORDEN DE SERVICIO TAMBIÉN AQUÍ -->
                                     <div class="docs-lista" style="margin: 12px 0;">
                                         <span class="doc-item excel"><i class="fas fa-file-excel"></i> <a
                                                 href="acceso/MODELO DE ORDEN DE SERVICIO.xlsx" target="_blank">MODELO DE
@@ -1322,7 +1470,6 @@
                                 </div>
                             </div>
 
-                            <!-- OPCIÓN OTRAS FORMAS DE PAGO -->
                             <div class="opcion-pago">
                                 <div class="opcion-header" onclick="toggleOpcion(this)">
                                     <i class="fas fa-credit-card"></i> Otras formas de pago
@@ -1343,7 +1490,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- FACTURACIÓN -->
             <div style="background:#e9f2e2; border-radius:24px; padding:1rem; margin:12px 0;">
@@ -1371,8 +1517,7 @@
                             target="_blank">RUT.pdf</a></span>
                     <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
                             href="acceso/CERTIFICACIONES BANCARIAS/SOLO LA CERTIFICACION DAVIVIENDA.pdf"
-                            target="_blank">CERTIFICACION
-                            DAVIVIENDA.pdf</a></span>
+                            target="_blank">CERTIFICACION DAVIVIENDA.pdf</a></span>
                     <span class="doc-item pdf"><i class="fas fa-file-pdf"></i> <a
                             href="acceso/CERTIFICACIONES BANCARIAS/QR_0014818827.pdf" target="_blank">QR DAVIVIENDA Y
                             LLAVE.pdf</a></span>
@@ -1449,15 +1594,13 @@
                 </div>
 
                 <div class="grid-sede">
-                    <!-- Enlace de dirección mejorado como botón -->
                     <a href="https://www.google.com/maps/place/Ips+Progresando+En+Salud/@7.8811617,-72.4982139,14.96z/data=!4m6!3m5!1s0x8e664598b7e2b963:0x431474e35d1d32ce!8m2!3d7.875924!4d-72.498766!16s%2Fg%2F11g9q4k6xl?entry=ttu&g_ep=EgoyMDI2MDIxOC4wIKXMDSoASAFQAw%3D%3D"
                         target="_blank" class="direccion-boton">
                         <i class="fas fa-map-pin" style="color:#FFA000;"></i>
                         <div>
                             <h4 style="font-size:1rem;">Dirección</h4>
                             <p style="font-size:0.9rem;"><strong>Calle 21a # 0b-75, Barrio Blanco, Cúcuta Norte de
-                                    Santander</strong><br>Orden de
-                                llegada.</p>
+                                    Santander</strong><br>Orden de llegada.</p>
                         </div>
                     </a>
                     <div class="sede-card">
@@ -1494,14 +1637,186 @@
                 <i class="fas fa-check-circle" style="color:#639A33;"></i> Cada número es un enlace a WhatsApp. Haz clic
                 en los íconos <i class="fab fa-whatsapp"></i> para contactar.
             </div>
-        </div> <!-- fin contenido-principal -->
-    </div> <!-- fin documento-ips -->
+        </div>
+    </div>
+
+    <!-- ========== MODAL TELÉFONOS Y SOPORTE ========== -->
+    <div id="modalTelefonos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header azul">
+                <h2><i class="fas fa-phone-alt"></i> Teléfonos y Soporte · Cúcuta</h2>
+                <span class="close-modal" onclick="cerrarModal('modalTelefonos')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-sede-modal">
+                    <h3><i class="fas fa-headset"></i> Líneas de atención</h3>
+                    <div class="contacto-lista-modal">
+                        <div class="contacto-item-modal">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            <strong>Área Comercial / Cotizaciones:</strong>
+                            <a href="https://wa.me/573212152214" target="_blank" class="contacto-link">321 2152214</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            <strong>Soporte técnico / Pagos:</strong>
+                            <a href="https://wa.me/573173493236" target="_blank" class="contacto-link">317 3493236</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            <strong>Plataforma WEB (inconvenientes):</strong>
+                            <a href="https://wa.me/573049219192" target="_blank" class="contacto-link">304 3219192</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            <strong>Certificados médicos:</strong>
+                            <a href="https://wa.me/573160253447" target="_blank" class="contacto-link">316 0253447</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            <strong>Facturación:</strong>
+                            <a href="https://wa.me/573160253441" target="_blank" class="contacto-link">316 0253441</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-phone" style="color:#1976D2;"></i>
+                            <strong>Teléfono fijo:</strong>
+                            <span>6075489755</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL CORREOS ELECTRÓNICOS ========== -->
+    <div id="modalCorreos" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rojo">
+                <h2><i class="fas fa-envelope"></i> Correos electrónicos · Cúcuta</h2>
+                <span class="close-modal" onclick="cerrarModal('modalCorreos')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-sede-modal">
+                    <h3><i class="fas fa-envelope-open-text"></i> Correos por área</h3>
+                    <div class="contacto-lista-modal">
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                            <strong>Ventas / Cotizaciones:</strong>
+                            <a href="mailto:ventas@ipsprogresandoensalud.com"
+                                class="contacto-link">ventas@ipsprogresandoensalud.com</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                            <strong>Autorizaciones / Órdenes:</strong>
+                            <a href="mailto:autorizacionesipsprogresando@gmail.com"
+                                class="contacto-link">autorizacionesipsprogresando@gmail.com</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                            <strong>Contabilidad / Facturación:</strong>
+                            <a href="mailto:contabilidad@ipsprogresandoensalud.com"
+                                class="contacto-link">contabilidad@ipsprogresandoensalud.com</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-envelope" style="color:#D32F2F;"></i>
+                            <strong>Certificados médicos:</strong>
+                            <a href="mailto:coord.serviciosmedicosips@gmail.com"
+                                class="contacto-link">coord.serviciosmedicosips@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== MODAL ENLACES Y HORARIOS ========== -->
+    <div id="modalEnlaces" class="modal">
+        <div class="modal-content">
+            <div class="modal-header amarillo">
+                <h2><i class="fas fa-link"></i> Enlaces y horarios · Cúcuta</h2>
+                <span class="close-modal" onclick="cerrarModal('modalEnlaces')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="info-sede-modal">
+                    <h3><i class="fas fa-globe"></i> Enlaces importantes</h3>
+                    <div class="contacto-lista-modal">
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-globe" style="color:#FFA000;"></i>
+                            <strong>Plataforma WEB:</strong>
+                            <a href="https://progresandoweb.com/index.php/login" target="_blank"
+                                class="contacto-link">progresandoweb.com/login</a>
+                        </div>
+                        <div class="contacto-item-modal">
+                            <i class="fas fa-map-marker-alt" style="color:#FFA000;"></i>
+                            <strong>Ubicación:</strong>
+                            <a href="https://www.google.com/maps/place/Ips+Progresando+En+Salud/@7.8811617,-72.4982139,14.96z/data=!4m6!3m5!1s0x8e664598b7e2b963:0x431474e35d1d32ce!8m2!3d7.875924!4d-72.498766!16s%2Fg%2F11g9q4k6xl"
+                                target="_blank" class="contacto-link">Ver en Google Maps</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-sede-modal">
+                    <h3><i class="fas fa-clock"></i> Horarios de atención</h3>
+                    <div class="horario-item-modal"><strong>Lunes a viernes:</strong> 6:00 a.m - 12:00 m / 2:00 p.m -
+                        5:00 p.m</div>
+                    <div class="horario-item-modal"><strong>Sábados:</strong> 6:00 a.m - 12:00 m</div>
+                    <div class="horario-item-modal"><strong>Domingos y festivos:</strong> Cerrado</div>
+                    <div class="horario-item-modal"><strong>Dirección:</strong> Calle 21a # 0b-75, Barrio Blanco, Cúcuta
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
+        // Abrir modal
+        function abrirModal(tipo) {
+            let modalId = '';
+            if (tipo === 'telefonos') modalId = 'modalTelefonos';
+            else if (tipo === 'correos') modalId = 'modalCorreos';
+            else if (tipo === 'enlaces') modalId = 'modalEnlaces';
+
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Cerrar modal
+        function cerrarModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Cerrar modal al hacer clic fuera del contenido
+        window.onclick = function (event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+
         function toggleOpcion(header) {
             var contenido = header.nextElementSibling;
             contenido.classList.toggle('active');
-            // Rotar flecha
             var icon = header.querySelector('.fa-chevron-down');
             if (contenido.classList.contains('active')) {
                 icon.style.transform = 'rotate(180deg)';
@@ -1514,7 +1829,6 @@
             var contenido = header.nextElementSibling;
             if (contenido && contenido.classList.contains('contenido-colapsable')) {
                 contenido.classList.toggle('active');
-                // Rotar flecha del paso
                 var arrow = header.querySelector('.paso-arrow');
                 if (contenido.classList.contains('active')) {
                     arrow.style.transform = 'rotate(180deg)';
@@ -1524,7 +1838,6 @@
             }
         }
 
-        // Prevenir que al hacer clic en los enlaces dentro del header se cierre el paso
         document.querySelectorAll('.cabecera-paso a').forEach(link => {
             link.addEventListener('click', (e) => e.stopPropagation());
         });
